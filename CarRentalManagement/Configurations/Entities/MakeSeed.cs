@@ -10,7 +10,7 @@ namespace CarRentalManagement.Configurations.Entities
         {
             builder.HasData(
             new Make
-            {
+            { 
                 Id = 1,
                 Name = "BMW",
                 DateCreated = DateTime.Now,
