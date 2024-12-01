@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using CarRentalManagement.Domain;
+using CarRentalManagement.Configurations.Entities;
 
 namespace CarRentalManagement.Data
 {
@@ -20,5 +20,16 @@ namespace CarRentalManagement.Data
         public DbSet<CarRentalManagement.Domain.Booking> Booking { get; set; } = default!;
         public DbSet<CarRentalManagement.Domain.Customer> Customer { get; set; } = default!;
         public DbSet<CarRentalManagement.Domain.Model> Model { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new ColourSeed());
+
+            builder.ApplyConfiguration(new MakeSeed());
+
+            builder.ApplyConfiguration(new ModelSeed());
+        }
     }
 }
